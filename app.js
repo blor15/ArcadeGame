@@ -176,11 +176,23 @@ function initializeGame() {
     startButton.addEventListener('click', startGame);
 }
 
+const getInitialState = () => ({
+    horizontalVelocity: 10,
+    verticalVelocity: 0,
+    appleX: null,
+    appleY: null,
+    score: 0,
+    snake: [
+        {x: 200, y: 200},
+        {x: 190, y: 200}
+    ]
+});
 function resetGame() {
+    getInitialState();
+    move_snake();
     clearCanvas();
     drawApple();
     drawSnake();
-    move_snake();
     generate_apple();
     document.addEventListener('keydown', direction)
 }
@@ -188,6 +200,9 @@ function resetGame() {
 function reset() {
     resetButton.addEventListener('click', resetGame);
 }
+
+
+
 
 initializeGame();
 reset();
